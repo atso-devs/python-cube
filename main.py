@@ -28,4 +28,5 @@ elif (z > k):
 else:
     print()
 
-    
+    dot = (x + y) + (y * m + 1) + (count * z)
+    print("Порядковый номер точки: ", dot)
