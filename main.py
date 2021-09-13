@@ -1,24 +1,4 @@
-print("Выберите функционал")
-print("1 - main")
-print("2 - topSide")
-print("3 - leftSide")
-print("4 - rightSide")
-print("5 - bottomSide")
-
-number = int(input())
-
 def main():
-    print("Введите количество строк в матрице (n) => ")
-    n = int(input())
-
-    print("Введите количество столбцов в матрице (m) => ")
-    m = int(input())
-
-    print("Введите количество матриц (k) => ")
-    k = int(input())
-
-    count = (n + 1) * (m + 1)
-
     print("Введите координату x => ")
     x = int(input())
 
@@ -35,25 +15,11 @@ def main():
     elif z > k:
         print("z не может быть больше k")
     else:
-        print()
-
         dot = (x + y) + (y * m + 1) + (count * z)
         print("Порядковый номер точки: ", dot)
 
 
 def topSide():
-    print("Введите количество строк в матрице (n) => ")
-    n = int(input())
-
-    print("Введите количество столбцов в матрице (m) => ")
-    m = int(input())
-
-    print("Введите количество матриц (k) => ")
-    k = int(input())
-
-    count = (n + 1) * (m + 1)
-    print("Общее количество точек в одной матрице => ", count)
-
     x = 0
     y = 3
     z = 0
@@ -65,18 +31,6 @@ def topSide():
 
 
 def leftSide():
-    print("Введите количество строк в матрице (n) => ")
-    n = int(input())
-
-    print("Введите количество столбцов в матрице (m) => ")
-    m = int(input())
-
-    print("Введите количество матриц (k) => ")
-    k = int(input())
-
-    count = (n + 1) * (m + 1)
-    print("Общее количество точек в одной матрице => ", count)
-
     x = 0
     y = n
     z = 0
@@ -88,18 +42,6 @@ def leftSide():
 
 
 def rightSide():
-    print("Введите количество строк в матрице (n) => ")
-    n = int(input())
-
-    print("Введите количество столбцов в матрице (m) => ")
-    m = int(input())
-
-    print("Введите количество матриц (k) => ")
-    k = int(input())
-
-    count = (n + 1) * (m + 1)
-    print("Общее количество точек в одной матрице => ", count)
-
     x = m
     y = 0
     z = 0
@@ -111,18 +53,6 @@ def rightSide():
 
 
 def bottomSide():
-    print("Введите количество строк в матрице (n) => ")
-    n = int(input())
-
-    print("Введите количество столбцов в матрице (m) => ")
-    m = int(input())
-
-    print("Введите количество матриц (k) => ")
-    k = int(input())
-
-    count = (n + 1) * (m + 1)
-    print("Общее количество точек в одной матрице => ", count)
-
     x = 0
     y = 0
     z = 0
@@ -133,16 +63,40 @@ def bottomSide():
             print((x + y) + (y * m + 1) + (count * z))
 
 
-def action(number):
-    if number == 1:
+def action(num):
+    if num == 1:
         main()
-    elif number == 2:
+    elif num == 2:
         topSide()
-    elif number == 3:
+    elif num == 3:
         leftSide()
-    elif number == 4:
+    elif num == 4:
         rightSide()
-    elif number == 5:
+    elif num == 5:
         bottomSide()
 
-action(number)
+
+print("Выберите функционал: ")
+print("1 - main")
+print("2 - topSide")
+print("3 - leftSide")
+print("4 - rightSide")
+print("5 - bottomSide")
+
+num = int(input())
+
+if (num > 5) and (num < 1):
+    print("Введенные вами данные недопустимы. ")
+else:
+    print("Введите количество строк в матрице (n) => ")
+    n = int(input())
+
+    print("Введите количество столбцов в матрице (m) => ")
+    m = int(input())
+
+    print("Введите количество матриц (k) => ")
+    k = int(input())
+
+    count = (n + 1) * (m + 1)
+
+    action(num)
