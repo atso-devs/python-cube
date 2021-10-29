@@ -1,102 +1,84 @@
-def main():
-    print("Введите координату x => ")
+import numpy as np
+
+print("Введите количество строк матрицы: ")
+i = int(input())
+
+print("Введите количество столбцов матрицы: ")
+j = int(input())
+
+print("Введите количество матриц: ")
+k = int(input())
+
+ii = i
+jj = j
+kk = k
+
+MatrixList = np.arange(i*j*k).reshape(k, i, j)
+print(MatrixList)
+
+print("Общее количество элементов матриц: " + str(MatrixList.size))
+
+def Up(kk, ii, jj):
+    for k in range(kk):
+        for j in range(jj):
+            print(MatrixList[k][ii][j], end="\t")
+        print(" - Элементы матрицы: " + str(k+1), end="\t")
+        print("", end="\n")
+
+def Left(kk, ii, jj):
+    for k in range(kk):
+        for i in range(ii):
+            print(MatrixList[k][i][jj], end="\t")
+        print(" - Элементы матрицы: " + str(k+1), end="\t")
+        print("", end="\n")
+
+def Right(kk, ii, jj):
+    for k in range(kk):
+        for i in range(ii):
+            print(MatrixList[k][i][jj], end="\t")
+        print(" - Элементы матрицы: " + str(k+1), end="\t")
+        print("", end="\n")
+
+def Down(kk, ii, jj):
+    for k in range(kk):
+        for j in range(jj):
+            print(MatrixList[k][ii][j], end="\t")
+        print(" - Элементы матрицы: " + str(k+1), end="\t")
+        print("", end="\n")
+
+def SearchDot():
+    print("Введите номер строки: ")
     x = int(input())
 
-    print("Введите координату y => ")
+    print("Введите номер столбца: ")
     y = int(input())
 
-    print("Введите координату z => ")
+    print("Введите номер матрицы: ")
     z = int(input())
-
-    if x > n:
-        print("x не может быть больше n")
-    elif y > m:
-        print("y не может быть больше m")
-    elif z > k:
-        print("z не может быть больше k")
-    else:
-        dot = (x + y) + (y * m + 1) + (count * z)
-        print("Порядковый номер точки: ", dot)
+    print("Число по координатам - " + "x:" + str(x) + " y:" + str(y) + " z:" + str(z))
+    print(MatrixList[z-1][x-1][y-1])
 
 
-def topSide():
-    x = 0
-    y = 3
-    z = 0
-
-    print("Точки верхней грани куба: ")
-    for z in range(k):
-        for x in range(m + 1):
-            print((x + y) + (y * m + 1) + (count * z))
-
-
-def leftSide():
-    x = 0
-    y = n
-    z = 0
-
-    print("Точки левой грани куба: ")
-    for z in range(k):
-        for y in range(n + 1):
-            print((x + y) + (y * m + 1) + (count * z))
-
-
-def rightSide():
-    x = m
-    y = 0
-    z = 0
-
-    print("Точки правой грани куба: ")
-    for z in range(k):
-        for y in range(n + 1):
-            print((x + y) + (y * m + 1) + (count * z))
-
-
-def bottomSide():
-    x = 0
-    y = 0
-    z = 0
-
-    print("Точки нижней грани куба: ")
-    for z in range(k):
-        for x in range(m + 1):
-            print((x + y) + (y * m + 1) + (count * z))
-
-
-def action(num):
-    if num == 1:
-        main()
-    elif num == 2:
-        topSide()
-    elif num == 3:
-        leftSide()
-    elif num == 4:
-        rightSide()
-    elif num == 5:
-        bottomSide()
+def switch(switchNum):
+    if switchNum == 1:
+        Up(kk, 0, jj)
+    elif switchNum == 2:
+        Left(kk, ii, 0)
+    elif switchNum == 3:
+        Right(kk, ii, jj-1)
+    elif switchNum == 4:
+        Down(kk, ii-1, jj)
+    elif switchNum == 5:
+        SearchDot()
 
 
 print("Выберите функционал: ")
-print("1 - main")
-print("2 - topSide")
-print("3 - leftSide")
-print("4 - rightSide")
-print("5 - bottomSide")
+print("1 - Верхняя грань")
+print("2 - Левая грань")
+print("3 - Правая грань")
+print("4 - Нижняя грань")
+print("5 - Найти число по координатам")
 
-num = int(input())
+switchNum = int(input())
 
-if (num > 5) and (num < 1):
-    print("Введенные вами данные недопустимы. ")
-else:
-    print("Введите количество строк в матрице (n) => ")
-    n = int(input())
-
-    print("Введите количество столбцов в матрице (m) => ")
-    m = int(input())
-
-    print("Введите количество матриц (k) => ")
-    k = int(input())
-
-    count = (n + 1) * (m + 1)
-
-    action(num)
+switch(switchNum)
